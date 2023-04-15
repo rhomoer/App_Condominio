@@ -102,15 +102,15 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
     <FormContainer ref={ref} onSubmit={handleSubmit}>
       <InputArea>
         <Label>Nome</Label>
-        <Input name="nome" />
+        <Input name="nome" placeholder=" Nome e Sobrenome" />
       </InputArea>
       <InputArea>
         <Label>Casa</Label>
-        <Input name="email" />
+        <Input name="email" placeholder="Casa XX" />
       </InputArea>
       <InputArea>
         <Label>Telefone</Label>
-        <Input name="fone" />
+        <Input name="fone" type="tel" />
       </InputArea>
       <InputArea>
         <Label>Data da Reserva</Label>
