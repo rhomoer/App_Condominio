@@ -41,7 +41,7 @@ function App() {
     <>
       <Container>
       <Title>CONDOMINIO RESIDENCIAL SPLENDOR VILA MATILDE</Title>
-      <Title>Reseva da Churrasqueira</Title>
+      <Title>Reserva da Churrasqueira</Title>
         <Form onEdit={onEdit} setOnEdit={setOnEdit} getUsers={getUsers} />
         <Grid setOnEdit={setOnEdit} users={users} setUsers={setUsers} />
       </Container>
