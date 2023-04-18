@@ -66,9 +66,9 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
     <Table>
       <Thead>
         <Tr>
-        <Th onlyWeb>Data de Reserva</Th>
+        <Th>Data</Th>
         <Th>Casa</Th>
-          <Th>Nome</Th>
+  
           <Th></Th>
           <Th></Th>
         </Tr>
@@ -76,7 +76,7 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
       <Tbody>
         {users.map((item, i) => (
           <Tr key={i}>
-                <Td width="20%" onlyWeb> 
+                <Td width="20%"> 
                 
                 {(item.data_nascimento.slice(0,10)).slice(8,10) + '/'} 
               
@@ -87,7 +87,7 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
 
             </Td>
             <Td width="30%">{item.email}</Td>
-            <Td width="30%">{item.nome}</Td>
+     
          
         
             <Td alignCenter width="5%">
