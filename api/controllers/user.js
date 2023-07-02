@@ -1,6 +1,8 @@
 import { db } from "../db.js";
-import { email } from "../email.js";
-import { telegram } from "../telegram.js";
+//import { email } from "../email.js";
+//import { telegram } from "../telegram.js";
+import { Telegraf } from 'telegraf';
+
 
 export const getUsers = (_, res) => {
   const q = "SELECT * FROM usuarios";
@@ -13,6 +15,11 @@ export const getUsers = (_, res) => {
 };
 
 export const addUser = (req, res) => {
+  
+  
+const bot = new Telegraf("6241295914:AAGDCWURKhuXREItSYWNRlj9TZezXxwaK5E");
+bot.telegram.sendMessage(1107843237,"Teste " +  new Date());
+
   const q =
     "INSERT INTO usuarios(`nome`, `email`, `fone`, `data_nascimento`) VALUES(?)";
 
@@ -59,3 +66,4 @@ export const deleteUser = (req, res) => {
     return res.status(200).json("Reserva deletado com sucesso.");
   });
 };
+
