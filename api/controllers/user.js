@@ -3,6 +3,7 @@ import { db } from "../db.js";
 //import { telegram } from "../telegram.js";
 import { Telegraf } from 'telegraf';
 
+const bot = new Telegraf("6241295914:AAGDCWURKhuXREItSYWNRlj9TZezXxwaK5E");
 
 export const getUsers = (_, res) => {
   const q = "SELECT * FROM usuarios";
@@ -17,7 +18,6 @@ export const getUsers = (_, res) => {
 export const addUser = (req, res) => {
   
   
-const bot = new Telegraf("6241295914:AAGDCWURKhuXREItSYWNRlj9TZezXxwaK5E");
 bot.telegram.sendMessage(1107843237,"Teste " +  new Date());
 
   const q =
@@ -30,6 +30,8 @@ bot.telegram.sendMessage(1107843237,"Teste " +  new Date());
     req.body.data_nascimento,
   ];
 
+ // const bot = new Telegraf("6241295914:AAGDCWURKhuXREItSYWNRlj9TZezXxwaK5E");
+  bot.telegram.sendMessage(1107843237,"Teste " +  new Date());
   db.query(q, [values], (err) => {
     if (err) return res.json(err);
 
@@ -56,7 +58,8 @@ export const updateUser = (req, res) => {
     return res.status(200).json("Reserva atualizado com sucesso.");
   });
 };
-
+bot.telegram.sendMessage(1107843237,"Teste " +  new Date());
+ 
 export const deleteUser = (req, res) => {
   const q = "DELETE FROM usuarios WHERE `id` = ?";
 
@@ -67,3 +70,5 @@ export const deleteUser = (req, res) => {
   });
 };
 
+bot.telegram.sendMessage(1107843237,"Teste " +  new Date());
+ 
