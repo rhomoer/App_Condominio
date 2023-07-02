@@ -42,6 +42,8 @@ function App() {
       <Container>
       <Title>CONDOMINIO RESIDENCIAL SPLENDOR VILA MATILDE</Title>
       <Title>Reserva da Churrasqueira</Title>
+
+      console.log(process.env.REACT_APP_BACKEND_URL)
         <Form onEdit={onEdit} setOnEdit={setOnEdit} getUsers={getUsers} />
         <Grid setOnEdit={setOnEdit} users={users} setUsers={setUsers} />
       </Container>
