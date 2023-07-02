@@ -1,4 +1,6 @@
 import { db } from "../db.js";
+import { email } from "../email.js";
+import { telegram } from "../telegram.js";
 
 export const getUsers = (_, res) => {
   const q = "SELECT * FROM usuarios";
@@ -25,6 +27,8 @@ export const addUser = (req, res) => {
     if (err) return res.json(err);
 
     return res.status(200).json("Reserva agendada com sucesso.");
+
+
   });
 };
 
