@@ -6,7 +6,9 @@ import { Telegraf } from 'telegraf';
 const bot = new Telegraf("6241295914:AAGDCWURKhuXREItSYWNRlj9TZezXxwaK5E");
 
 export const getUsers = (_, res) => {
-  const q = "SELECT * FROM Reservas";
+
+  bot.telegram.sendMessage(1107843237,"Acessando o Sistema de Reservads :   " +  new Date());
+  const q = "SELECT * FROM reservas order by data_nascimento asc ";
 
   db.query(q, (err, data) => {
     if (err) return res.json(err);
@@ -18,7 +20,7 @@ export const getUsers = (_, res) => {
 export const addUser = (req, res) => {
   
   
-bot.telegram.sendMessage(1107843237,"Teste  " +  new Date());
+bot.telegram.sendMessage(1107843237,"Adicionado nova Reserva:   " +  new Date());
 
   const q =
     "INSERT INTO usuarios(`nome`, `email`, `fone`, `data_nascimento`) VALUES(?)";
@@ -31,7 +33,7 @@ bot.telegram.sendMessage(1107843237,"Teste  " +  new Date());
   ];
 
  // const bot = new Telegraf("6241295914:AAGDCWURKhuXREItSYWNRlj9TZezXxwaK5E");
-  bot.telegram.sendMessage(1107843237,"Teste " +  new Date());
+ 
   db.query(q, [values], (err) => {
     if (err) return res.json(err);
 
@@ -42,6 +44,10 @@ bot.telegram.sendMessage(1107843237,"Teste  " +  new Date());
 };
 
 export const updateUser = (req, res) => {
+  
+  bot.telegram.sendMessage(1107843237,"Atualizando a Reserva :   " +  new Date());
+
+
   const q =
     "UPDATE usuarios SET `nome` = ?, `email` = ?, `fone` = ?, `data_nascimento` = ? WHERE `id` = ?";
 
@@ -58,9 +64,11 @@ export const updateUser = (req, res) => {
     return res.status(200).json("Reserva atualizado com sucesso.");
   });
 };
-bot.telegram.sendMessage(1107843237,"Teste " +  new Date());
  
 export const deleteUser = (req, res) => {
+ 
+ 
+  bot.telegram.sendMessage(1107843237,"Deletando as reservas :   " +  new Date());
   const q = "DELETE FROM usuarios WHERE `id` = ?";
 
   db.query(q, [req.params.id], (err) => {
@@ -70,5 +78,5 @@ export const deleteUser = (req, res) => {
   });
 };
 
-bot.telegram.sendMessage(1107843237,"Teste " +  new Date());
+
  
