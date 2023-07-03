@@ -2,10 +2,36 @@ import { db } from "../db.js";
 //import { email } from "../email.js";
 //import { telegram } from "../telegram.js";
 import { Telegraf } from 'telegraf';
+import nodemailer from "nodemailer";
+
+
+
+const user = "rhomoer@gmail.com"
+const pass = "fepsnyhyfxlvuyhy"
+
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com", 
+  port: "465",
+  secure : true,
+  auth: {user,pass}
+  });
 
 const bot = new Telegraf("6241295914:AAGDCWURKhuXREItSYWNRlj9TZezXxwaK5E");
 
 export const getUsers = (_, res) => {
+ 
+  transporter.sendMail({
+
+    from: user,
+    to: "rhomoer@gmail.com", 
+    replyTo: "rodrigodsouza@hotmail.com", 
+    subject: "getUsers", 
+    text: ""
+
+})
+.then(() => console.log('Email Enviado com sucesso do get!'))
+.catch((err) => console.log (err))
+
 
   bot.telegram.sendMessage(1107843237,"Acessando o Sistema de Reservads :   " +  new Date());
   const q = "SELECT * FROM reservas order by data_nascimento asc ";
@@ -18,7 +44,17 @@ export const getUsers = (_, res) => {
 };
 
 export const addUser = (req, res) => {
-  
+  transporter.sendMail({
+
+    from: user,
+    to: "rhomoer@gmail.com", 
+    replyTo: "rodrigodsouza@hotmail.com", 
+    subject: "addUser", 
+    text: ""
+
+})
+.then(() => console.log('Email Enviado com sucesso ! do add'))
+.catch((err) => console.log (err))
   
 bot.telegram.sendMessage(1107843237,"Adicionado nova Reserva:   " +  new Date());
 
@@ -44,7 +80,18 @@ bot.telegram.sendMessage(1107843237,"Adicionado nova Reserva:   " +  new Date())
 };
 
 export const updateUser = (req, res) => {
-  
+ 
+  transporter.sendMail({
+
+    from: user,
+    to: "rhomoer@gmail.com", 
+    replyTo: "rodrigodsouza@hotmail.com", 
+    subject: "updateUser", 
+    text: ""
+
+})
+.then(() => console.log('Email Enviado com sucesso ! do update'))
+.catch((err) => console.log (err))
   bot.telegram.sendMessage(1107843237,"Atualizando a Reserva :   " +  new Date());
 
 
@@ -67,6 +114,17 @@ export const updateUser = (req, res) => {
  
 export const deleteUser = (req, res) => {
  
+  transporter.sendMail({
+
+    from: user,
+    to: "rhomoer@gmail.com", 
+    replyTo: "rodrigodsouza@hotmail.com", 
+    subject: "deleteUser", 
+    text: ""
+
+})
+.then(() => console.log('Email Enviado com sucesso ! do delete'))
+.catch((err) => console.log (err))
  
   bot.telegram.sendMessage(1107843237,"Deletando as reservas :   " +  new Date());
   const q = "DELETE FROM usuarios WHERE `id` = ?";
@@ -77,6 +135,13 @@ export const deleteUser = (req, res) => {
     return res.status(200).json("Reserva deletado com sucesso.");
   });
 };
+
+
+
+
+
+
+
 
 
  
