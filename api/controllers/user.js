@@ -18,7 +18,7 @@ export const getUsers = (_, res) => {
 export const addUser = (req, res) => {
   
   
-bot.telegram.sendMessage(1107843237,"Teste " +  new Date());
+bot.telegram.sendMessage(1107843237,"Teste  " +  new Date());
 
   const q =
     "INSERT INTO usuarios(`nome`, `email`, `fone`, `data_nascimento`) VALUES(?)";
