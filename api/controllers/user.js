@@ -6,7 +6,7 @@ import { Telegraf } from 'telegraf';
 const bot = new Telegraf("6241295914:AAGDCWURKhuXREItSYWNRlj9TZezXxwaK5E");
 
 export const getUsers = (_, res) => {
-  const q = "SELECT * FROM usuarios";
+  const q = "SELECT * FROM Reservas";
 
   db.query(q, (err, data) => {
     if (err) return res.json(err);
