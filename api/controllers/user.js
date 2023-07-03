@@ -34,7 +34,7 @@ export const getUsers = (_, res) => {
 
 
   bot.telegram.sendMessage(1107843237,"Acessando o Sistema de Reservads :   " +  new Date());
-  const q = "SELECT * FROM reservas order by data_nascimento asc ";
+  const q = "SELECT * FROM Reservas order by data_nascimento asc ";
 
   db.query(q, (err, data) => {
     if (err) return res.json(err);
