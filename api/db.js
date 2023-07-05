@@ -12,8 +12,8 @@ export const db = mysql.createConnection({
   host: "192.185.176.163",
     user: "engete23_root_eg",
     password: "jppHSKPnGyH57CN"
- 
 /*
+
     host: "localhost",
     user: "root",
     password: "password"
