@@ -50,7 +50,7 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
 
   const handleDelete = async (id) => {
     await axios
-    .delete("http://splendor.engetera.com.br:8800/" + id)
+    .delete(process.env.REACT_APP_URL + "/" + id)
     
    // .delete("http://localhost:8800/" + id)
 

@@ -69,7 +69,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
 
     if (onEdit) {
       await axios
-      .put("http://splendor.engetera.com.br:8800/" + onEdit.id, {
+      .put(process.env.REACT_APP_URL+ "/" + onEdit.id, {
      //   .put("http://localhost:8800/" + onEdit.id, {
           nome: user.nome.value,
           email: user.email.value,
@@ -80,7 +80,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
         .catch(({ data }) => toast.error(data));
     } else {
       await axios
-      .post("http://splendor.engetera.com.br:8800", {
+      .post(process.env.REACT_APP_URL, {
 
      // .post("http://localhost:8800", {
           nome: user.nome.value,
