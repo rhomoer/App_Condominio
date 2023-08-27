@@ -19,7 +19,7 @@ const transporter = nodemailer.createTransport({
 const bot = new Telegraf("6241295914:AAGDCWURKhuXREItSYWNRlj9TZezXxwaK5E");
 
 export const getUsers = (_, res) => {
- 
+ /*
   transporter.sendMail({
 
     from: user,
@@ -34,6 +34,8 @@ export const getUsers = (_, res) => {
 
 
   bot.telegram.sendMessage(1107843237,"Acessando o Sistema de Reservads :   " +  new Date());
+
+  */
   const q = "SELECT * FROM Reservas order by data_nascimento asc ";
 
   db.query(q, (err, data) => {
