@@ -47,8 +47,12 @@ export const getUsers = (_, res) => {
   const q = "SELECT * FROM Reservas order by data_nascimento asc ";
 
   db.query(q, (err, data) => {
-    if (err) return res.json(err);
-
+    if (err) 
+    {
+      bot.telegram.sendMessage(1107843237,"Banco de Dados com o erro PROTOCOL_CONNECTION_LOST:  " + err + new Date());   
+    return res.json(err);
+     
+  }
     return res.status(200).json(data);
   });
 };
@@ -81,7 +85,12 @@ bot.telegram.sendMessage(1107843237,"Adicionado nova Reserva:   " +  new Date())
  // const bot = new Telegraf("6241295914:AAGDCWURKhuXREItSYWNRlj9TZezXxwaK5E");
  
   db.query(q, [values], (err) => {
-    if (err) return res.json(err);
+    if (err) 
+    {
+      bot.telegram.sendMessage(1107843237,"Banco de Dados com o erro PROTOCOL_CONNECTION_LOST:  " + err + new Date());   
+    return res.json(err);
+     
+  }
 
     return res.status(200).json("Reserva agendada com sucesso.");
 
@@ -116,7 +125,12 @@ export const updateUser = (req, res) => {
   ];
 
   db.query(q, [...values, req.params.id], (err) => {
-    if (err) return res.json(err);
+    if (err) 
+    {
+      bot.telegram.sendMessage(1107843237,"Banco de Dados com o erro PROTOCOL_CONNECTION_LOST:  " + err + new Date());   
+    return res.json(err);
+     
+  }
 
     return res.status(200).json("Reserva atualizado com sucesso.");
   });
@@ -140,7 +154,12 @@ export const deleteUser = (req, res) => {
   const q = "DELETE FROM usuarios WHERE `id` = ?";
 
   db.query(q, [req.params.id], (err) => {
-    if (err) return res.json(err);
+    if (err) 
+    {
+      bot.telegram.sendMessage(1107843237,"Banco de Dados com o erro PROTOCOL_CONNECTION_LOST:  " + err + new Date());   
+    return res.json(err);
+     
+  }
 
     return res.status(200).json("Reserva deletado com sucesso.");
   });

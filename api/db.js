@@ -3,7 +3,7 @@ import { Telegraf } from 'telegraf';
 
 const bot = new Telegraf("6241295914:AAGDCWURKhuXREItSYWNRlj9TZezXxwaK5E");
 
-
+/*
 
 var db_config = {
     host: '192.185.176.163',
@@ -11,13 +11,22 @@ var db_config = {
       password: 'jppHSKPnGyH57CN',
       database: 'engete23_totem_engetera_db'
   };
+*/
+export const db = mysql.createPool({
+    host: '192.185.176.163',
+    user: 'engete23_root_eg',
+    database: 'engete23_totem_engetera_db',
+    password: 'jppHSKPnGyH57CN'
+  });
+
+
   
-  export var db;
+ //  var db;
+
+ /*
   
   function handleDisconnect() {
-   db = mysql.createConnection(db_config); // Recreate the connection, since
-                                                    // the old one cannot be reused.
-  
+    
     db.connect(function(err) {              // The server is either down
       if(err) {  
         bot.telegram.sendMessage(1107843237,"Banco de Dados com o erro tal:  " + err + new Date());                                   // or restarting (takes a while sometimes).
@@ -39,4 +48,4 @@ var db_config = {
   }
   
   handleDisconnect();
-
+*/
