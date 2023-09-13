@@ -3,6 +3,9 @@ import { db } from "../db.js";
 //import { telegram } from "../telegram.js";
 import { Telegraf } from 'telegraf';
 import nodemailer from "nodemailer";
+import fs from 'fs'
+import { error } from "console";
+import { ApiError } from "../helpers/api-erros.js";
 
 
 
@@ -17,14 +20,19 @@ const transporter = nodemailer.createTransport({
   });
 
 const bot = new Telegraf("6241295914:AAGDCWURKhuXREItSYWNRlj9TZezXxwaK5E");
+//const messageErroTelegram = bot.telegram.sendMessage(1107843237,"Acessando o Sistema de Reservads :   " +  new Date());
 
 export const getUsers = (_, res) => {
+
+
+
+
  /*
   transporter.sendMail({
 
     from: user,
     to: "rhomoer@gmail.com", 
-    replyTo/gi: "rodrigodsouza@hotmail.com", 
+    replyTo: "rodrigodsouza@hotmail.com", 
     subject: "getUsers", 
     text: ""
 
@@ -39,17 +47,9 @@ export const getUsers = (_, res) => {
   const q = "SELECT * FROM Reservas order by data_nascimento asc ";
 
   db.query(q, (err, data) => {
-   
-    if (err) {
-      bot.telegram.sendMessage(1107843237,err);
+    if (err) return res.json(err);
 
-      return res.status(200).json(data);
-
-    }
-    
-    return res.json(err);
-
-    
+    return res.status(200).json(data);
   });
 };
 
@@ -81,13 +81,7 @@ bot.telegram.sendMessage(1107843237,"Adicionado nova Reserva:   " +  new Date())
  // const bot = new Telegraf("6241295914:AAGDCWURKhuXREItSYWNRlj9TZezXxwaK5E");
  
   db.query(q, [values], (err) => {
-    if (err) 
-    
-    {
-      bot.telegram.sendMessage(1107843237,err);
-      return res.json(err);
-
-    }
+    if (err) return res.json(err);
 
     return res.status(200).json("Reserva agendada com sucesso.");
 
@@ -122,11 +116,8 @@ export const updateUser = (req, res) => {
   ];
 
   db.query(q, [...values, req.params.id], (err) => {
-    if (err) 
-    {
-      bot.telegram.sendMessage(1107843237,err);
-      return res.json(err);
-    }
+    if (err) return res.json(err);
+
     return res.status(200).json("Reserva atualizado com sucesso.");
   });
 };
@@ -149,11 +140,7 @@ export const deleteUser = (req, res) => {
   const q = "DELETE FROM usuarios WHERE `id` = ?";
 
   db.query(q, [req.params.id], (err) => {
-    if (err) 
-    {
-      bot.telegram.sendMessage(1107843237,err);
-      return res.json(err);
-    }  
+    if (err) return res.json(err);
 
     return res.status(200).json("Reserva deletado com sucesso.");
   });
