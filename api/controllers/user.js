@@ -22,6 +22,24 @@ const transporter = nodemailer.createTransport({
 const bot = new Telegraf("6241295914:AAGDCWURKhuXREItSYWNRlj9TZezXxwaK5E");
 //const messageErroTelegram = bot.telegram.sendMessage(1107843237,"Acessando o Sistema de Reservads :   " +  new Date());
 
+function formatDate(date) {
+  var d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+  if (month.length < 2) 
+      month = '0' + month;
+  if (day.length < 2) 
+      day = '0' + day;
+
+  return [day, month, year ].join('/');
+}
+
+
+
+
+
 export const getUsers = (_, res) => {
 
 
@@ -49,7 +67,7 @@ export const getUsers = (_, res) => {
   db.query(q, (err, data) => {
     if (err) 
     {
-      bot.telegram.sendMessage(1107843237,"Banco de Dados com o erro PROTOCOL_CONNECTION_LOST:  " + err + new Date());   
+      bot.telegram.sendMessage(1107843237,formatDate(Date()) - "Banco de Dados com o erro PROTOCOL_CONNECTION_LOST:  " + err );   
     return res.json(err);
      
   }
@@ -70,7 +88,7 @@ export const addUser = (req, res) => {
 .then(() => console.log('Email Enviado com sucesso ! do add'))
 .catch((err) => console.log (err))
   
-bot.telegram.sendMessage(1107843237,"Adicionado nova Reserva:   " +  new Date());
+bot.telegram.sendMessage(1107843237,formatDate(Date()) + "- "  + "Adicionado nova Reserva:   " );
 
   const q =
     "INSERT INTO usuarios(`nome`, `email`, `fone`, `data_nascimento`) VALUES(?)";
@@ -87,7 +105,7 @@ bot.telegram.sendMessage(1107843237,"Adicionado nova Reserva:   " +  new Date())
   db.query(q, [values], (err) => {
     if (err) 
     {
-      bot.telegram.sendMessage(1107843237,"Banco de Dados com o erro PROTOCOL_CONNECTION_LOST:  " + err + new Date());   
+      bot.telegram.sendMessage(1107843237,formatDate(Date()) + "- "  + "Banco de Dados com o erro PROTOCOL_CONNECTION_LOST:  " + err );   
     return res.json(err);
      
   }
@@ -111,7 +129,7 @@ export const updateUser = (req, res) => {
 })
 .then(() => console.log('Email Enviado com sucesso ! do update'))
 .catch((err) => console.log (err))
-  bot.telegram.sendMessage(1107843237,"Atualizando a Reserva :   " +  new Date());
+  bot.telegram.sendMessage(1107843237,formatDate(Date()) + "- "  + "Atualizando a Reserva ");
 
 
   const q =
@@ -127,7 +145,7 @@ export const updateUser = (req, res) => {
   db.query(q, [...values, req.params.id], (err) => {
     if (err) 
     {
-      bot.telegram.sendMessage(1107843237,"Banco de Dados com o erro PROTOCOL_CONNECTION_LOST:  " + err + new Date());   
+      bot.telegram.sendMessage(1107843237,formatDate(Date()) + "- "  + "Banco de Dados com o erro PROTOCOL_CONNECTION_LOST:  " + err );   
     return res.json(err);
      
   }
@@ -150,13 +168,13 @@ export const deleteUser = (req, res) => {
 .then(() => console.log('Email Enviado com sucesso ! do delete'))
 .catch((err) => console.log (err))
  
-  bot.telegram.sendMessage(1107843237,"Deletando as reservas :   " +  new Date());
+  bot.telegram.sendMessage(1107843237,formatDate(Date()) + "- "  + "Deletando as reservas :   " );
   const q = "DELETE FROM usuarios WHERE `id` = ?";
 
   db.query(q, [req.params.id], (err) => {
     if (err) 
     {
-      bot.telegram.sendMessage(1107843237,"Banco de Dados com o erro PROTOCOL_CONNECTION_LOST:  " + err + new Date());   
+      bot.telegram.sendMessage(1107843237,formatDate(Date()) + "- "  +  "Banco de Dados com o erro PROTOCOL_CONNECTION_LOST:  " + err);   
     return res.json(err);
      
   }
