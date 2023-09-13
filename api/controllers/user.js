@@ -67,7 +67,7 @@ export const getUsers = (_, res) => {
   db.query(q, (err, data) => {
     if (err) 
     {
-      bot.telegram.sendMessage(1107843237,formatDate(Date()) - "Banco de Dados com o erro PROTOCOL_CONNECTION_LOST:  " + err );   
+      bot.telegram.sendMessage(1107843237,"Erro em : " + formatDate(Date()) + "- "  +  "Banco de Dados com o erro :  " + err);   
     return res.json(err);
      
   }
@@ -105,7 +105,7 @@ bot.telegram.sendMessage(1107843237,formatDate(Date()) + "- "  + "Adicionado nov
   db.query(q, [values], (err) => {
     if (err) 
     {
-      bot.telegram.sendMessage(1107843237,formatDate(Date()) + "- "  + "Banco de Dados com o erro PROTOCOL_CONNECTION_LOST:  " + err );   
+      bot.telegram.sendMessage(1107843237,"Erro em : " + formatDate(Date()) + "- "  +  "Banco de Dados com o erro :  " + err);   
     return res.json(err);
      
   }
@@ -129,7 +129,7 @@ export const updateUser = (req, res) => {
 })
 .then(() => console.log('Email Enviado com sucesso ! do update'))
 .catch((err) => console.log (err))
-  bot.telegram.sendMessage(1107843237,formatDate(Date()) + "- "  + "Atualizando a Reserva ");
+  bot.telegram.sendMessage(1107843237,"Atualizando a Reserva :  " + formatDate(Date()));
 
 
   const q =
@@ -145,8 +145,8 @@ export const updateUser = (req, res) => {
   db.query(q, [...values, req.params.id], (err) => {
     if (err) 
     {
-      bot.telegram.sendMessage(1107843237,formatDate(Date()) + "- "  + "Banco de Dados com o erro PROTOCOL_CONNECTION_LOST:  " + err );   
-    return res.json(err);
+      bot.telegram.sendMessage(1107843237,"Erro em : " + formatDate(Date()) + "- "  +  "Banco de Dados com o erro :  " + err);   
+
      
   }
 
@@ -168,13 +168,13 @@ export const deleteUser = (req, res) => {
 .then(() => console.log('Email Enviado com sucesso ! do delete'))
 .catch((err) => console.log (err))
  
-  bot.telegram.sendMessage(1107843237,formatDate(Date()) + "- "  + "Deletando as reservas :   " );
+  bot.telegram.sendMessage(1107843237,"Deletando as reservas :" + formatDate(Date()));
   const q = "DELETE FROM usuarios WHERE `id` = ?";
 
   db.query(q, [req.params.id], (err) => {
     if (err) 
     {
-      bot.telegram.sendMessage(1107843237,formatDate(Date()) + "- "  +  "Banco de Dados com o erro PROTOCOL_CONNECTION_LOST:  " + err);   
+      bot.telegram.sendMessage(1107843237,"Erro em : " + formatDate(Date()) + "- "  +  "Banco de Dados com o erro :  " + err);   
     return res.json(err);
      
   }
