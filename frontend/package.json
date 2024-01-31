@@ -19,9 +19,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "startLinux": "export PORT=1337 react-scripts start",
-    "start": "set PORT=1337 react-scripts start",
-
+    "startLinux": "export PORT=1337 && react-scripts start",
+    "start": "set PORT=1337 && react-scripts start",
     
     "build": "react-scripts build",
     "test": "react-scripts test",
