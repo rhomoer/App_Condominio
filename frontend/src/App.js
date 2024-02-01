@@ -29,7 +29,7 @@ function App() {
 
   const getUsers = async () => {
     try {
-     const res = await axios.get(process.env.REACT_APP_URL);
+     const res = await axios.get(process.env.REACT_APP_URL_EC2-NAME|process.env.REACT_APP_URL_EC2-IP| process.env.REACT_APP_URL_HTTPS-cname);
       setUsers(res.data.sort((a, b) => (a.nome > b.nome ? 1 : -1)));
     } catch (error) {
       toast.error(error);
