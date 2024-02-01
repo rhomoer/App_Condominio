@@ -50,7 +50,7 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
 
   const handleDelete = async (id) => {
     await axios
-    .delete(process.env.REACT_APP_URL_EC2_NAME|process.env.REACT_APP_URL_EC2_IP| process.env.REACT_APP_URL_HTTPS_cname + "/" + id)
+    .delete(process.env.REACT_APP_URL_EC2_NAME + "/" + id)
     
    // .delete("http://localhost:8800/" + id)
 

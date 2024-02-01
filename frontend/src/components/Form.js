@@ -69,7 +69,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
 
     if (onEdit) {
       await axios
-      .put(process.env.REACT_APP_URL_EC2_NAME|process.env.REACT_APP_URL_EC2_IP| process.env.REACT_APP_URL_HTTPS_cname+ "/" + onEdit.id, {
+      .put(process.env.REACT_APP_URL_EC2_NAME + "/" + onEdit.id, {
      //   .put("http://localhost:8800/" + onEdit.id, {
           nome: user.nome.value,
           email: user.email.value,
@@ -80,7 +80,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
         .catch(({ data }) => toast.error(data));
     } else {
       await axios
-      .post(process.env.REACT_APP_URL_EC2_NAME|process.env.REACT_APP_URL_EC2_IP| process.env.REACT_APP_URL_HTTPS_cname, {
+      .post(process.env.REACT_APP_URL_EC2_NAME, {
 
      // .post("http://localhost:8800", {
           nome: user.nome.value,
